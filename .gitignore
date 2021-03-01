@@ -2,4 +2,4 @@
 /previous_studies/eye_frames_2
 .ipynb_checkpoints
 __pycache__
-*.dat
+#*.dat
