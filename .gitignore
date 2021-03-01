@@ -1,4 +1,5 @@
 /previous_study/eye_frames
-/previous_study/eye_frames2
+/previous_study/eye_frames_2
 .ipynb_checkpoints
 __pycache__
+*.dat
