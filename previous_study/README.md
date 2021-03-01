@@ -1,3 +1,6 @@
+
+# Previous Studies: Eye Tracking
+
 This repo contains the optimized gaze detection using openSource library https://github.com/antoinelame/GazeTracking
 BLOB_DETECTION algorythm is used for detecting gaze.
 
@@ -11,14 +14,14 @@ BLOB_DETECTION algorythm is used for detecting gaze.
     - Pipelines for obtaining iris frames from raw images ()
     - Testing the impact of iris_frame with different thresholds (using official libraries)
     - Store the landmarks, frame, points as common variables
-3. **detect._iris.ipynb ** Tried methods (not worked all with the knowledge I had), Therefore all the results of those methods can be improved with the knowledge of ayyalas)-
+3. **detect._iris.ipynb** Tried methods (not worked all with the knowledge I had), Therefore all the results of those methods can be improved with the knowledge of ayyalas)-
     1. filters: sobel, bilateral
     2. Hough detection- good
     3. watershed- somewhat good
     4. grabcut
     5. blob detection
     6. some others...
-4. **blob_detection.ipynb -**
+4. **blob_detection.ipynb**
     - For find center of pupils, they have used "contour detection and finding the center" ****
     - Here, I have tried blurring + blob detection for find pupil/ center
     - blurring ? was used because with the sharpness of the image/ noise of the image, blob detection was not worked well (As I remembered)
@@ -33,9 +36,9 @@ BLOB_DETECTION algorythm is used for detecting gaze.
     - Showing real time eyes
 8. **realtime_iris_frame_only.ipynb**
     - Showing real time iris
-9. **filtered_pupil_centerpoint_realitime.ipynb (IMPORTANT)**
+9. **filtered_pupil_centerpoint_realitime.ipynb (Novel)**
     - Previous algorithms were changed a bit/ calibrations added
     - This was the best results when I stopped working on this
-10. **example.ipynb (NO NEED TO GO THROUGH)**
+10. **example.ipynb**
     - experiments with classes of repository
         - eg: gaze.eye_right.pupil.iris_frame, etc
