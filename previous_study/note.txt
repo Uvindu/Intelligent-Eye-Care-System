@@ -1,0 +1,2 @@
+when pupil isnot detecting -> pupil cant be identified -> 1. face detection failed (change the face angle/ half face detected)
+                                                          2. detected iris_frame= 0 (when changing the eye size)
