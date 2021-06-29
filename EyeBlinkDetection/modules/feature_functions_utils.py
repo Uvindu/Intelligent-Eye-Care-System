@@ -17,12 +17,17 @@ def get_eye_line(eye_landmarks):
 
 def get_frp(image_gray, landmarks, return_img= False, check_errors= False):
     if check_errors==True:
+      image_gray_show= image_gray.copy()
       for point in landmarks:
           point= tuple(map(int, point))
-          image_gray = cv2.circle(image_gray, point, 10, (0), -1)
-      plt.imshow(image_gray, cmap='gray')
+          image_gray_show = cv2.circle(image_gray_show, point, 10, (0), -1)
+      plt.imshow(image_gray_show, cmap='gray')
       plt.title('get frp start')
       plt.show() 
+      
+      plt.imshow(image_gray)
+      plt.title('original image')
+      plt.show()
 
     min_pixel_color= 255
     max_pixel_color=0
@@ -40,20 +45,24 @@ def get_frp(image_gray, landmarks, return_img= False, check_errors= False):
             min_pixel_color=gray_color
             y_min, x_min= [y, x]
 
+    #print(min_pixel_color, max_pixel_color)
+
+    image_gray_show= image_gray.copy()
     for x,y in eye_line:
-        image_gray[y, x]=255
+        image_gray_show[y, x]=255
     try:
-      image_gray[y_min-2:y_min+2, x_min-2:x_min+2]=0
-      image_gray[y_max-2:y_max+2, x_max-2:x_max+2]=0
+      image_gray_show[y_min-2:y_min+2, x_min-2:x_min+2]=0
+      image_gray_show[y_max-2:y_max+2, x_max-2:x_max+2]=0
     except:
       print(f'detected face is incorrect !!! : make check errors= True to see | currect check_errors : {check_errors}')
       if check_errors==True:
+        image_gray_show= image_gray.copy()
         for point in eye_line:
-          image_gray = cv2.circle(image_gray, point, 10, (0), -1)
+          image_gray_show = cv2.circle(image_gray_show, point, 10, (0), -1)
         for point in landmarks:
           point= tuple(map(int, point))
-          image_gray = cv2.circle(image_gray, point, 10, (0), -1)
-        plt.imshow(image_gray, cmap='gray')
+          image_gray_show = cv2.circle(image_gray_show, point, 10, (0), -1)
+        plt.imshow(image_gray_show, cmap='gray')
         plt.title('get_frp : detected face incorrect !!!')
         plt.show()
 
@@ -62,7 +71,7 @@ def get_frp(image_gray, landmarks, return_img= False, check_errors= False):
       else:pass
 
     frp= (max_pixel_color+0.1)/(min_pixel_color+0.1)
-    if return_img:return image_gray, frp
+    if return_img:return image_gray_show, frp
     else:return frp
 
 def img2eye(image_gray, eye_landmark, landmark=None, resize= 28, check_errors= False):

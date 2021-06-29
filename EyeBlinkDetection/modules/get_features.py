@@ -9,11 +9,12 @@ def image2features(image_gray, feature_func, faces, landmark_detector=None, chec
   eye1_landmark= landmark[36:42]
   eye2_landmark= landmark[42:48]
 
-  if check_errors==True:  
+  if check_errors==True:
+    image_gray_show= image_gray.copy()  
     for point in landmark:
         point= tuple(map(int, point))
-        image_gray = cv2.circle(image_gray, point, 10, (0), -1)
-    plt.imshow(image_gray, cmap='gray')
+        image_gray_show = cv2.circle(image_gray_show, point, 10, (0), -1)
+    plt.imshow(image_gray_show, cmap='gray')
     plt.title('image2features :start')
     plt.show()   
     
@@ -38,6 +39,10 @@ def get_features_for_sample(dataset_filedirvslabel, sample_id, feature_func, det
 
     else:
       landmark= 'no face'
-      print(f"no faces : {img_dir}")
+      print(f"no faces detected : {img_dir}")
+      if check_errors:
+        plt.imshow(image_gray)
+        plt.title('get_features_for_sample: No faces detected !!!, return None, None')
+        plt.show()
       return None, None
   return np.array([features_eye1, features_eye2]), label
