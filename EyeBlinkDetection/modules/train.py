@@ -56,13 +56,13 @@ def train(model, criterion, opt, train_loader, val_loader, n_epochs, device, sho
       plt.plot(loss_train, label='train')
       plt.plot(loss_val, label= 'val')
       plt.legend()
-      plt.title(f'loss : after {epoch} epochs')
+      plt.title(f'loss : after {epoch} epochs :: min -> {np.round(np.min(loss_val), 3)}')
 
       plt.subplot(1,2,2)
       plt.plot(acc_train, label='train')
       plt.plot(acc_val, label= 'val')
       plt.legend()
-      plt.title(f'accuracy : after {epoch} epochs')
+      plt.title(f'accuracy : after {epoch} epochs :: max -> {np.round(np.max(acc_val), 3)}')
 
       plt.show()
 
